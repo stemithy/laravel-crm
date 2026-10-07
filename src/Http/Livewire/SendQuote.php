@@ -6,7 +6,6 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use VentureDrake\LaravelCrm\Services\SettingService;
 use VentureDrake\LaravelCrm\Support\PdfContactDetails;
@@ -83,9 +82,8 @@ class SendQuote extends Component
 
         $pdfLocation = 'laravel-crm/'.strtolower(class_basename($this->quote)).'/'.$this->quote->id.'/';
 
-        if (! File::exists($pdfLocation)) {
-            Storage::makeDirectory($pdfLocation);
-        }
+        // Ensure the storage directory exists on the local filesystem before saving the PDF
+        File::ensureDirectoryExists(storage_path('app/'.$pdfLocation));
 
         $this->pdf = 'app/'.$pdfLocation.'quote-'.strtolower($this->quote->quote_id).'.pdf';
 

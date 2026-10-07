@@ -1,24 +1,50 @@
 {
+  "_vendor-chart-Zj-L_LRF.js": {
+    "file": "assets/vendor-chart-Zj-L_LRF.js",
+    "name": "vendor-chart"
+  },
+  "_vendor-pdfjs-l0sNRNKZ.js": {
+    "file": "assets/vendor-pdfjs-l0sNRNKZ.js",
+    "name": "vendor-pdfjs"
+  },
+  "_vendor-picker-BbWAxTBd.js": {
+    "file": "assets/vendor-picker-BbWAxTBd.js",
+    "name": "vendor-picker"
+  },
+  "_vendor-sortable-rUYOJ6aL.js": {
+    "file": "assets/vendor-sortable-rUYOJ6aL.js",
+    "name": "vendor-sortable"
+  },
+  "_vendor-tinymce-DLavlwVs.js": {
+    "file": "assets/vendor-tinymce-DLavlwVs.js",
+    "name": "vendor-tinymce"
+  },
   "node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs": {
     "file": "assets/pdf.worker.min-rsCePomN.js",
     "src": "node_modules/pdfjs-dist/legacy/build/pdf.worker.min.mjs"
   },
   "resources/css/app.css": {
-    "file": "assets/app-x5c3VI4x.css",
+    "file": "assets/app-C9hdgJyF.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CAGSzucM.js",
+    "file": "assets/app-C0aepoMJ.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
+    "imports": [
+      "_vendor-sortable-rUYOJ6aL.js",
+      "_vendor-chart-Zj-L_LRF.js",
+      "_vendor-picker-BbWAxTBd.js",
+      "_vendor-tinymce-DLavlwVs.js"
+    ],
     "dynamicImports": [
       "resources/js/pdf-preview.js"
     ]
   },
   "resources/js/pdf-preview.js": {
-    "file": "assets/pdf-preview-wkS01K18.js",
+    "file": "assets/pdf-preview-CgpBopsr.js",
     "name": "pdf-preview",
     "src": "resources/js/pdf-preview.js",
     "isDynamicEntry": true,

@@ -9,7 +9,17 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    // Keep modern syntax (private fields, destructuring) without downleveling
+    // to very old targets that esbuild can't transpile reliably.
+    esbuild: {
+        target: 'es2022',
+    },
     build: {
+        target: 'es2022',
+        // Silence large vendor bundles warnings caused by heavy libraries
+        // that are intentionally included (tinymce, pdfjs). We also split
+        // them into separate chunks for better caching.
+        chunkSizeWarningLimit: 3000, // KB
         /*outDir: 'resources/build',*/
         // `public/vendor/laravel-crm/` is build output only. This wipes the
         // whole directory on every build, including any file the build did
@@ -19,6 +29,16 @@ export default defineConfig({
         emptyOutDir: true,
         rollupOptions: {
             output: {
+                // Split heavy, rarely-changing libraries into their own
+                // vendor chunks to reduce the app entry size and improve
+                // browser caching across deploys.
+                manualChunks: {
+                    'vendor-tinymce': ['tinymce'],
+                    'vendor-pdfjs': ['pdfjs-dist'],
+                    'vendor-chart': ['chart.js'],
+                    'vendor-sortable': ['sortablejs'],
+                    'vendor-picker': ['vanilla-picker'],
+                },
                 // `.mjs` is not in the default MIME map of nginx or older
                 // Apache, so hosts serve it as application/octet-stream —
                 // which the browser's strict module-script MIME check rejects
